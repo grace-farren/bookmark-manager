@@ -1,7 +1,19 @@
-<h1>Bookmarks</h1>
-
+<h1>Bookmark Manager</h1>
+<br>
+<a href="/bookmarks/new">Add a bookmark</a>
+<br>
 <ul>
-  <%@bookmarks.each do |bookmark|%>
-    <li> <%= bookmark %> </li>
+  <% @bookmarks.each do |bookmark| %>
+  <li class="bookmark" id="book-<%= bookmark.id%>">
+    <a href="<%= bookmark.url %>">
+      <%= bookmark.title %>
+      <br>
+      <form action="/bookmarks/<%= bookmark.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="submit" value="Delete" />
+      </form>
+    </a>
+  </li>
   <% end %>
 </ul>
+<br>
