@@ -1,7 +1,7 @@
 require 'sinatra'
 require './lib/bookmark'
 class BookmarkManager < Sinatra::Base
-  enable :sessions
+  enable :sessions, :method_override
 
   get'/bookmarks' do
     @bookmarks = Bookmark.all
